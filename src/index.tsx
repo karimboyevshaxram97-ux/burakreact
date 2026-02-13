@@ -8,12 +8,18 @@ import reportWebVitals from "./reportWebVitals";
 import "./css/index.css";
 import { ThemeProvider } from "@emotion/react";
 import theme from "./app/MaterialTheme";
+import { BrowserRouter as Router } from "react-router-dom";
+import { CssBaseline } from "@mui/material";
+
 
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
       <ThemeProvider theme={theme}>
-        <App />
+        <CssBaseline/>
+        <Router>
+          <App />
+        </Router>
       </ThemeProvider>
     </Provider>
   </React.StrictMode>,

@@ -74,3 +74,29 @@
 .home-navbar div.hover-line:after {
   transform-origin: 0% 50%;
 }
+
+.home-navbar .navbar-container .header-frame {
+  margin-top: 142px;
+  height: 462px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.home-navbar .navbar-container .header-frame .detail {
+  width: 510px;
+  display: flex;
+  flex-direction: column;
+}
+
+.home-navbar .navbar-container .header-frame .detail .head-main-txt {
+  width: 450px;
+  height: 150px;
+  font-family: "Roboto Serif";
+  font-size: 50px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: -0.75px;
+  color: #f8f8ff;
+}

@@ -2,33 +2,21 @@
 import React from "react";
 import "../css/app.css";
 import { Box, Button, Container, Stack, Typography } from "@mui/material";
-import {Link, Route, Switch }from "react-router-dom";
+import {Link, Route, Switch, useLocation }from "react-router-dom";
 import { HomePage} from "./screens/homePage/index";
 import { ProductsPage, } from "./screens/productsPage";
 import { OrdersPage, } from "./screens/ordersPage";
 import { UserPage, } from "./screens/userPage";
+import { HomeNavbar } from "./companents/headers/HomeNavbar";
+import { OtherNavbar } from "./companents/headers/OtherNavber";
 
 function App() {
-  return (
-  <div>
-      <nav>
-        <ul>
-          <li>
-            <Link to="/">HomePage</Link>
-          </li>
-          <li><Link to="/products">Products</Link>
-          </li>
-          <li>
-            <Link to="/orders">Orders</Link>
-          </li>
-          <li>
-            <Link to="/member-page">UserPage</Link>
-          </li>
-        </ul>
-      </nav>
-
-
-      <Switch>
+  const location = useLocation();
+  console.log("location:", location);
+  return (  
+  <>
+    {location.pathname === "/" ? <HomeNavbar/> : <OtherNavbar/>}
+    <Switch>
         <Route path="/products">
           <ProductsPage />
         </Route>
@@ -42,7 +30,7 @@ function App() {
           <HomePage />
         </Route> 
       </Switch>
-   </div>
+   </>
 
 );
 }

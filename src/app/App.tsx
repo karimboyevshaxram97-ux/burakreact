@@ -2,19 +2,22 @@
 import React from "react";
 import { Box, Button, Container, Stack, Typography } from "@mui/material";
 import {Link, Route, Switch, useLocation }from "react-router-dom";
-import { HomePage} from "./screens/homePage/index";
-import { ProductsPage, } from "./screens/productsPage";
-import { OrdersPage, } from "./screens/ordersPage";
-import { UserPage, } from "./screens/userPage";
-import { HomeNavbar } from "./companents/headers/HomeNavbar";
-import { OtherNavbar } from "./companents/headers/OtherNavber";
+import  HomePage from "./screens/homePage/index";
+import ProductsPage  from "./screens/productsPage";
+import  OrdersPage  from "./screens/ordersPage";
+import  UserPage  from "./screens/userPage";
+import  HomeNavbar  from "./companents/headers/HomeNavbar";
+import OtherNavbar  from "./companents/headers/OtherNavber";
+import HelpPage  from "./screens/helpPage";
+import Footer from "./companents/footer";
 import "../css/app.css";
 import "../css/navbar.css"
-import { HelpPage } from "./screens/helpPage";
+import "../css/footer.css"
+
 
 function App() {
   const location = useLocation();
-  console.log("location:", location);
+
   return (  
   <>
     {location.pathname === "/" ? <HomeNavbar/> : <OtherNavbar/>}
@@ -35,6 +38,7 @@ function App() {
           <HomePage />
         </Route> 
       </Switch>
+      <Footer/>
    </>
 
 );

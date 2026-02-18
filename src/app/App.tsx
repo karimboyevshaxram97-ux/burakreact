@@ -38,7 +38,7 @@ function App() {
           <HomePage />
         </Route> 
       </Switch>
-      <Footer/>
+      <Footer/> 
    </>
 
 );

@@ -24,12 +24,13 @@ export default function PopularDishes() {
           <Box className="category-title">Popular Dishes</Box>
 
           <Stack className="cards-frame">
-            {list.map((ele, index) => {
+              {PopularDishes.length === 0 ? (
+            list.map((ele, index) => {
               return (
                 <CssVarsProvider key={index}>
                   <Card className={"card"}>
                     <CardCover>
-                      <img src={ele.imagePath} alt="" />
+                      <img src={ele.imagePath} alt="rasm" />
                     </CardCover>
 
                     <CardCover className={"card-cover"} />
@@ -83,8 +84,11 @@ export default function PopularDishes() {
                     </CardOverflow>
                   </Card>
                 </CssVarsProvider>
-              );
-            })}
+             );
+           })
+            ) : (
+               <Box className="no-data">New products are not available!</Box>
+             )}
           </Stack>
         </Stack>
       </Container>

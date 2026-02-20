@@ -37,14 +37,14 @@ export default function NewDishes() {
                        <Stack  flexDirection={"row"}
                        justifyContent={"space-between"}
                        >
-                       <Typography display={"flex"} gap={'8px'} level="h3" fontSize="md" textColor={'#25272D'} mb={1}>
+                       <Typography display={"flex"} gap={'13px'} level="h3" fontSize="md" textColor={'red'} mb={-1}>
                         {e.productName}
-                        <Divider  height="24" width="2" bg="#D9D9D9"/>
+                        <Divider  height="24" width="2" bg="#7d6f92"/>
                         $7
                        </Typography>
-                       <Typography sx={{fontWeight: "md", color: "#343434", alignItems: "center", display:"flex"}}> 
+                       <Typography sx={{fontWeight: "md", color: "blue", alignItems: "center", display:"flex"}}> 
                         12
-                        <VisibilityIcon sx={{ fontSize: 20, marginLeft: '5px'}}/>
+                        <VisibilityIcon sx={{ fontSize: 20, marginLeft: '5px',}}/>
                        </Typography>
                        </Stack>
                     </CardContent>

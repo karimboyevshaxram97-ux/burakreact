@@ -40,6 +40,7 @@ export default function PopularDishes() {
                         flexDirection={"row"}
                         justifyContent={"space-between"}
                       >
+                        
                         <Typography
                           level="h2"
                           fontSize="lg"
@@ -49,7 +50,9 @@ export default function PopularDishes() {
                           {ele.productName}
                         </Typography>
 
-                        <Typography
+                      
+
+                         <Typography
                           sx={{
                             fontWeight: "md",
                             color: "neutral.300",
@@ -57,10 +60,10 @@ export default function PopularDishes() {
                             display: "flex",
                           }}
                         >
-                          20
+                          300
                           <VisibilityIcon
-                            sx={{ fontSize: 25, marginLeft: "5px" }}
-                          />
+                            sx={{ fontSize: 25, marginLeft: "5px", }}
+                          />   
                         </Typography>
                       </Stack>
                     </CardContent>
@@ -95,3 +98,4 @@ export default function PopularDishes() {
     </div>
   );
 }
+

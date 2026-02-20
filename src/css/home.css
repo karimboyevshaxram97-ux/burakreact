@@ -1,18 +1,7 @@
 .homepage {
     width: 100%;
     height: auto;
-}
-
-.homepage .category-title {
-    text-align: center;
-    font-family: "Roboto Serif";
-    font-size: 36px;
-    font-style: normal;
-    font-weight: 600;
-    line-height: normal;
-    letter-spacing: 1.44px;
-    color: #000;
-
+  
 }
 
  /* statistics*/
@@ -130,6 +119,17 @@
     height: 609px;
     display: flex;
     background: #f8f8ff;
+}
+
+.homepage .category-title {
+    text-align: center;
+    font-family: "Roboto Serif";
+    font-size: 36px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    letter-spacing: 1.44px;
+    color: #000;
 }
 
 .homepage .new-dishes-frame .new-dishes-section {

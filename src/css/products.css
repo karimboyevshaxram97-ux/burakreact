@@ -180,7 +180,7 @@
     opacity: 1;
 }
 
-/** Size badge **/
+/**s Size badge **/
 
 .products .list-category-section .product-wrapper 
 .product-card .product-sale {
@@ -330,7 +330,10 @@
     border-radius: 20px;
     background: #0D1518;
     box-shadow: 0 0 22px 0 #E4D4D4;
+    
 }
+
+
 
 .products .brands-logo .family-brands .brand-list .review-box img {
     width: 100%;

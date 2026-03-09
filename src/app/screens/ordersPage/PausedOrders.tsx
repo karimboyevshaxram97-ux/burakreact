@@ -7,11 +7,11 @@ export default function PausedOrders() {
   return (
     <TabPanel value={"1"}>
       <Stack>
-        {[1, 2].map((ele, index) => {
+        {[1, 2, 3].map((ele, index) => {
           return (
             <Box key={index} className={"order-main-box"}>
               <Box className={"order-box-scroll"}>
-                {[1, 2, 3].map((ele2, index2) => {
+                {[1, 2, 3, 4, 5].map((ele2, index2) => {
                   return (
                     <Box key={index2} className={"orders-name-price"}>
                       <img
@@ -59,7 +59,7 @@ export default function PausedOrders() {
           );
         })}  
 
-        {true && (
+        {false && (
            <Box display={"flex"} flexDirection={"row"} justifyContent={"center"}>
              <img
                src={"/icons/noimage-list.svg"}

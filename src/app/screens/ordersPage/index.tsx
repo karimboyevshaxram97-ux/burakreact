@@ -19,6 +19,8 @@ export default function OrdersPage() {
   return (
     <div className={"order-page"}>
       <Container className="order-container">
+       
+       
         <Stack className={"order-left"}>
           <TabContext value={value}>
             <Box className={"order-nav-frame"}>
@@ -43,6 +45,7 @@ export default function OrdersPage() {
             </Stack>
           </TabContext>
         </Stack>
+
 
         <Stack className={"order-right"}>
           <Box className={"order-info-box"}>
@@ -73,36 +76,37 @@ export default function OrdersPage() {
             </Box>
           </Box>
 
+
           <Box className={"order-info-box"}>
-  <input
-    type={"text"}
-    placeholder={"Card number : 5243 4090 2002 7495"}
-    className={"card-input"}
-  />
-  <div style={{ display: "flex", flexDirection: "row", gap: "8px" }}>
-    <input
-      type={"text"}
-      placeholder={"07 / 24"}
-      className={"card-input"}
-    />
-    <input
-      type={"text"}
-      placeholder={"CVV : 010"}
-      className={"card-input"}
-    />
-  </div>
-  <input
-    type={"text"}
-    placeholder={"Justin Robertson"}
-    className={"card-input"}
-  />
-  <div className={"cards-box"}>
-    <img src={"/icons/western-card.svg"} />
-    <img src={"/icons/master-card.svg"} />
-    <img src={"/icons/paypal-card.svg"} />
-    <img src={"/icons/visa-card.svg"} />
-  </div>
-</Box>
+             <input
+                 type={"text"}
+                 placeholder={"Card number : 5243 4090 2002 7495"}
+                 className={"card-input"}
+               />
+               <div style={{ display: "flex", flexDirection: "row", gap: "8px" }}>
+                 <input
+                   type={"text"}
+                   placeholder={"07 / 24"}
+                   className={"card-input"}
+                 />
+                 <input
+                   type={"text"}
+                   placeholder={"CVV : 010"}
+                   className={"card-input"}
+                 />
+               </div>
+               <input
+                 type={"text"}
+                 placeholder={"Justin Robertson"}
+                 className={"card-input"}
+               />
+               <div className={"cards-box"}>
+                 <img src={"/icons/western-card.svg"} />
+                 <img src={"/icons/master-card.svg"} />
+                 <img src={"/icons/paypal-card.svg"} />
+                <img src={"/icons/visa-card.svg"} />
+               </div>
+             </Box>
         </Stack>
       </Container>
     </div>

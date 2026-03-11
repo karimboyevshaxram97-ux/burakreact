@@ -3,8 +3,11 @@ import HomePage from "./screens/homePage";
 import HomePageReducer from "./screens/homePage/slice";
 
 export const store = configureStore({
+  middleware: (getDefaultMiddleware) =>
+    // @ts-ignore
+    getDefaultMiddleware().concat(reduxLogger),
   reducer: {
-    HomePage: HomePageReducer,
+    homePage: HomePageReducer,
   },
 });
 

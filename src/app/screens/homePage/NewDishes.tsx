@@ -1,4 +1,3 @@
-
 import React from "react";
 import { Box, Container, Stack } from "@mui/joy";
 import AspectRatio from "@mui/joy/AspectRatio";
@@ -10,55 +9,83 @@ import VisibilityIcon from "@mui/icons-material/Visibility";
 import Divider from "../../companents/divider";
 import { CardContent, CardCover } from "@mui/joy";
 
-const  list = [
-  { productName: "Cutlet", imagePath: "/img/cutlet.webp" },
-  { productName: "Kebab", imagePath: "/img/kebab-fresh.webp" },
-  { productName: "Kebab", imagePath: "/img/kebab.webp" },
-  { productName: "Lavash", imagePath: "/img/lavash.webp" },
-];
+import { useSelector } from "react-redux";
+import { createSelector } from "reselect";
+import { retrieveNewDishes } from "./selector";
+import { Product } from "../../../lib/types/product";
+
+import { serverApi } from "../../../lib/config";
+import { ProductCollection } from "../../../lib/enums/product.enum";
+
+
+const newDishesRetriever = createSelector(
+  retrieveNewDishes,
+  (newDishes) => newDishes
+);
 
 export default function NewDishes() {
-  return  (<div className="new-dishes-frame"> 
+  const newDishes = useSelector(newDishesRetriever) as Product[];
+
+  console.log("newDishes:", newDishes)
+
+ return (
+  <div className={"new-products-frame"}>
     <Container>
-        <Stack className="new-dishes-section">
-         <Box className="category-title">Fresh Menu</Box>
-         <Stack   className="cards-frame">
-           { list.length !== 0 ? list.map((e, i) => {
-            return (
-                <CssVarsProvider key={i}>
-                 <Card sx={{p: 0}} className="card" >
-                  <img className="product-volume" src="/icons/Product Volume.png" alt="" />
-                  <CardCover>
-                    <img src={e.imagePath} alt="" />
-                  </CardCover>
+      <Stack className={"main"}>
+        <Box className={"category-title"}>Fresh Menu</Box>
+        <Stack className={"cards-frame"}>
+          <CssVarsProvider>
+            {newDishes.length !== 0 ? (
+              newDishes.map((product: Product) => {
+                const imagePath = `${serverApi}/${product.productImages[0]}`;
+                const sizeVolume =
+                  product.productCollection === ProductCollection.DRINK
+                    ? product.productVolume + "l"
+                    : product.productSize + " size";
+                return (
+                  <Card
+                    key={product._id}
+                    variant="outlined"
+                    className={"card"}
+                  >
+                    <CardOverflow>
+                      <div className="product-sale">{sizeVolume}</div>
+                      <AspectRatio ratio="1">
+                        <img src={imagePath} alt="" />
+                      </AspectRatio>
+                    </CardOverflow>
 
-                    <CardContent sx={{ justifyContent: "flex-end",  mt: '100%', zIndex: 2, background: '#FAFBFB',width: "289px", minHeight: '45px',py:1.5, borderRadius: "0 0 7px 6px"
-                    }}>
-                       <Stack  flexDirection={"row"}
-                       justifyContent={"space-between"}
-                       >
-                       <Typography display={"flex"} gap={'13px'} level="h3" fontSize="md" textColor={'red'} mb={-1}>
-                        {e.productName}
-                        <Divider  height="24" width="2" bg="#7d6f92"/>
-                        $7
-                       </Typography>
-                       <Typography sx={{fontWeight: "md", color: "blue", alignItems: "center", display:"flex"}}> 
-                        12
-                        <VisibilityIcon sx={{ fontSize: 20, marginLeft: '5px',}}/>
-                       </Typography>
-                       </Stack>
-                    </CardContent>
-                 </Card>
-                </CssVarsProvider>
-            )
-           })
-            : (
-               <Box className="no-data">New products are not available!</Box>
-             )
-           }
-         </Stack>
+                    <CardOverflow variant="soft" className={"product-detail"}>
+                      <Stack className={"row"}>
+                        <Stack flexDirection={"row"}>
+                          <Typography className={"title"}>
+                            {product.productName}
+                          </Typography>
+                          <Divider width="2" height="24" bg="#d9d9d9" />
+                          <Typography className={"price"}>
+                            ${product.productPrice}
+                          </Typography>
+                        </Stack>
+                        <Stack>
+                          <Typography className={"views"}>
+                            {product.productViews}
+                            <VisibilityIcon
+                              sx={{ fontSize: 20, marginLeft: "5px" }}
+                            />
+                          </Typography>
+                        </Stack>
+                      </Stack>
+                    </CardOverflow>
+                  </Card>
+                );
+              })
+            ) : (
+              <Box className="no-data">New products are not available!</Box>
+            )}
+          </CssVarsProvider>
         </Stack>
+      </Stack>
     </Container>
-    </div>)
+  </div>
+);
 }
-

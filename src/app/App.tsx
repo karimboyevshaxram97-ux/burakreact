@@ -1,28 +1,25 @@
-
 import React from "react";
-import { Box, Button, Container, Stack, Typography } from "@mui/material";
-import {Link, Route, Switch, useLocation }from "react-router-dom";
-import  HomePage from "./screens/homePage/index";
-import ProductsPage  from "./screens/productsPage";
-import  OrdersPage  from "./screens/ordersPage";
-import  UserPage  from "./screens/userPage";
-import  HomeNavbar  from "./companents/headers/HomeNavbar";
-import OtherNavbar  from "./companents/headers/OtherNavber";
-import HelpPage  from "./screens/helpPage";
+import { Route, Switch, useLocation } from "react-router-dom";
+import HomePage from "./screens/homePage/index";
+import ProductsPage from "./screens/productsPage";
+import OrdersPage from "./screens/ordersPage";
+import UserPage from "./screens/userPage";
+import HomeNavbar from "./companents/headers/HomeNavbar";
+import OtherNavbar from "./companents/headers/OtherNavber";
+import HelpPage from "./screens/helpPage";
 import Footer from "./companents/footer";
 import "../css/app.css";
-import "../css/navbar.css"
-import "../css/footer.css"
-import"../css/home.css"
-import Test from "./screens/Test";
+import "../css/navbar.css";
+import "../css/footer.css";
+import "../css/home.css";
 
 function App() {
   const location = useLocation();
 
-  return (  
-  <>
-    {location.pathname === "/" ? <HomeNavbar/> : <OtherNavbar/>}
-    <Switch>
+  return (
+    <>
+      {location.pathname === "/" ? <HomeNavbar /> : <OtherNavbar />}
+      <Switch>
         <Route path="/products">
           <ProductsPage />
         </Route>
@@ -35,19 +32,13 @@ function App() {
         <Route path="/help">
           <HelpPage />
         </Route>
-         <Route path="/">
+        <Route path="/">
           <HomePage />
-        </Route> 
+        </Route>
       </Switch>
-      <Footer/> 
-   </>
-
-);
+      <Footer />
+    </>
+  );
 }
 
-
 export default App;
-
-
-
-

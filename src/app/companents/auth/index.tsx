@@ -40,10 +40,11 @@ interface AuthenticationModalProps {
   loginOpen: boolean;
   handleSignupClose: () => void;
   handleLoginClose: () => void;
+  setAuthMember: (member: any) => void;
 }
 
 export default function AuthenticationModal(props: AuthenticationModalProps) {
-  const { signupOpen, loginOpen, handleSignupClose, handleLoginClose } = props;
+  const { signupOpen, loginOpen, handleSignupClose, handleLoginClose, setAuthMember } = props;
   const classes = useStyles();
   const [memberNick, setMemberNick] = useState<string>("");
   const [memberPhone, setMemberPhone] = useState<string>("");
@@ -87,10 +88,10 @@ const handleSignupRequest = async () => {
       memberPassword: memberPassword,
     };
 
-    const member = new MemberService();
-    const result = await member.signup(signupInput);
-    
-    // Saving Authenticated user 
+    const memberService = new MemberService();
+    const result = await memberService.signup(signupInput);
+
+    setAuthMember(result);
     handleSignupClose();
   } catch (err) {
     console.log(err);
@@ -112,9 +113,8 @@ const handleLoginRequest = async () => {
 
     const memberService = new MemberService();
     const result = await memberService.login(loginInput);
-     
 
-    // Saving Authhenticated user 
+    setAuthMember(result);
     handleLoginClose();
   } catch (err) {
     console.log(err);

@@ -21,6 +21,7 @@ function App() {
   const { cartItems, onAdd, onRemove, onDelete, onDeleteAll} = useBasket();
   const [signupOpen, setSignupOpen] = useState<boolean>(false);
   const [loginOpen, setLoginOpen] = useState<boolean>(false);
+  const [authMember, setAuthMember] = useState<any>(null); // can use Member type if imported
 
   /** HANDLERS **/
 
@@ -36,8 +37,9 @@ function App() {
        onRemove={onRemove}
        onDelete={onDelete}
        onDeleteAll={onDeleteAll}
-        setSignupOpen={setSignupOpen}
+       setSignupOpen={setSignupOpen}
        setLoginOpen={setLoginOpen}
+       authMember={authMember}
        />
       ) : (
          <OtherNavbar 
@@ -48,6 +50,7 @@ function App() {
        onDeleteAll={onDeleteAll}
        setSignupOpen={setSignupOpen}
        setLoginOpen={setLoginOpen}
+       authMember={authMember}
       /> 
        )}
 
@@ -76,6 +79,7 @@ function App() {
         loginOpen={loginOpen}
         handleLoginClose={handleLoginClose}
         handleSignupClose={handleSignupClose}
+        setAuthMember={setAuthMember}
        />
     </>
   );

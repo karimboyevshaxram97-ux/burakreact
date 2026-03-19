@@ -7,12 +7,13 @@ import { CartItem } from "../../../lib/types/search";
 
 interface HomeNavbarProps {
   cartItems: CartItem[];
-   onAdd: (item: CartItem) => void;
+  onAdd: (item: CartItem) => void;
   onRemove: (item: CartItem) => void;
   onDelete: (item: CartItem) => void;
   onDeleteAll: () => void;
   setSignupOpen: (isOpen: boolean) => void;
   setLoginOpen: (isOpen: boolean) => void;
+  authMember: any;
 }
 
 
@@ -23,9 +24,9 @@ export default function HomeNavbar(props: HomeNavbarProps) {
        onDelete,
        onDeleteAll,
        setSignupOpen,
-       setLoginOpen 
+       setLoginOpen,
+       authMember
        } = props;
-    const authMember = null;
     
 
     /** HANDLERS */

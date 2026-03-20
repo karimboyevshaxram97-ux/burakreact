@@ -15,18 +15,42 @@ import "../css/home.css";
 import { CartItem } from "../lib/types/search";
 import useBasket from "./hooks/useBasket";
 import AuthenticationModal from "./companents/auth";
+import { sweetErrorHandling, sweetTopSuccessAlert } from "../lib/sweetAlert";
+import { Messages } from "../lib/config";
+import { T } from "../lib/types/common";
+import MemberService from "./services/MemberService";
+import { useGlobals } from "./hooks/useGlobals";
 
 function App() {
   const location = useLocation();
-  const { cartItems, onAdd, onRemove, onDelete, onDeleteAll} = useBasket();
+  const { setAuthMember } = useGlobals();
+  const { cartItems, onAdd, onRemove, onDelete, onDeleteAll } = useBasket();
   const [signupOpen, setSignupOpen] = useState<boolean>(false);
   const [loginOpen, setLoginOpen] = useState<boolean>(false);
-  const [authMember, setAuthMember] = useState<any>(null); // can use Member type if imported
+  const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
 
   /** HANDLERS **/
 
   const handleSignupClose = () => setSignupOpen(false);
   const handleLoginClose = () => setLoginOpen(false);
+
+  const handleLogoutClick = (e: T) => {
+    setAnchorEl(e.currentTarget);
+  };
+
+  const handleCloseLogout = () => setAnchorEl(null);
+  const handleLogoutRequest = async () => {
+    try {
+      const member = new MemberService();
+      await member.logout();
+      await sweetTopSuccessAlert("succes", 700);
+      setAuthMember(null);
+    } catch (err) {
+      console.log(err);
+      sweetErrorHandling(Messages.error1);
+    }
+  };
+
 
   return (
     <>
@@ -36,10 +60,13 @@ function App() {
        onAdd={onAdd}
        onRemove={onRemove}
        onDelete={onDelete}
-       onDeleteAll={onDeleteAll}
+        onDeleteAll={onDeleteAll}
        setSignupOpen={setSignupOpen}
        setLoginOpen={setLoginOpen}
-       authMember={authMember}
+       anchorEl={anchorEl}
+       handleLogoutClick={handleLogoutClick}
+       handleCloseLogout={handleCloseLogout}
+       handleLogoutRequest={handleLogoutRequest}
        />
       ) : (
          <OtherNavbar 
@@ -50,8 +77,11 @@ function App() {
        onDeleteAll={onDeleteAll}
        setSignupOpen={setSignupOpen}
        setLoginOpen={setLoginOpen}
-       authMember={authMember}
-      /> 
+       handleLogoutClick={handleLogoutClick}
+       anchorEl={anchorEl}
+       handleCloseLogout={handleCloseLogout}
+       handleLogoutRequest={handleLogoutRequest}
+        /> 
        )}
 
       <Switch>
@@ -82,7 +112,7 @@ function App() {
         setAuthMember={setAuthMember}
        />
     </>
-  );
-}
+  )
+};
 
 export default App;

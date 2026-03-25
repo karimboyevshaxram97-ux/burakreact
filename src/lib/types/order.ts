@@ -5,12 +5,12 @@ export interface OrderItemInput {
   itemQuantity: number;
   itemPrice: number;
   productId: string;
-  orderId: string;        // ixtiyoriy — buyurtma yaratilganda hali yo'q bo'lishi mumkin
+  orderId?: string;        // ixtiyoriy — buyurtma yaratilganda hali yo'q bo'lishi mumkin
 }
 
 export interface OrderItem {
   _id: string;
-  itemQuatity: number;
+  itemQuantity: number;
   itemPrice: number;
   orderId: string;
   productId: string;
@@ -37,7 +37,7 @@ export interface OrderInquiry {
   orderStatus: OrderStatus;
 }
 
-export interface OrderItemInput {
+export interface OrderUpdateInput {
   orderId: string;
   orderStatus: OrderStatus;
 }

@@ -1,5 +1,5 @@
 import { Member } from "./member";
-import { Order } from "./orders";
+import { Order } from "./order";
 import { Product } from "./product";
 
 /* REACT APP STATE */
